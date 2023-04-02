@@ -19,7 +19,7 @@ randstr2="ieonnhejnho"
 
 echo "Step-1: compiling the Circuit" >> $log
 start=$(date +%s%N)
-circom ../circomlib-ml/circuits/"$file.circom" --r1cs --sym --c -o ./
+circom ../circomlib_ml/circuits/"$file.circom" --r1cs --sym --c -o ./
 end=$(date +%s%N)
 echo "Elapsed Time for Step-1: $((($end - $start)/1000000)) ms"  >> $log
 
