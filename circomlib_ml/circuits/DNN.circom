@@ -3,21 +3,25 @@ pragma circom 2.0.0;
 include "./circomlib-matrix/matMul.circom";
 include "./Dense_with_relu.circom";
 // Dense layer
-template DNN (i1, o1, i2, o2, i3, o3) {
+template DNN (i1, o1, i2, o2, i3, o3, i4, o4) {
     signal input in1[i1];
     signal input wts1[i1][o1];
     signal input wts2[i2][o2];
     signal input wts3[i3][o3];
+    signal input wts4[i4][o4];
     signal input bias1[o1];
     signal input bias2[o2];
     signal input bias3[o3];
+    signal input bias4[o4];
     signal out1[o1];
     signal out2[o2];
-    signal output out3[o3];
+    signal out3[o3];
+    signal output out4[o4];
 
     component Dense1 = Dense_with_relu(i1, o1);
     component Dense2 = Dense_with_relu(i2, o2);
     component Dense3 = Dense_with_relu(i3, o3);
+    component Dense4 = Dense_with_relu(i4, o4);
 
     //layer 1
     for (var i=0;i<i1;i++){
@@ -64,7 +68,20 @@ template DNN (i1, o1, i2, o2, i3, o3) {
         out3[j] <== Dense3.out[j];
     }
 
+    //layer 4
+    for (var i=0;i<i4;i++){
+        Dense4.in[i] <== out3[i];
+        for(var j=0;j<o4;j++){
+            Dense4.weights[i][j] <== wts4[i][j];
+        }
+    }
+    for(var j=0;j<o4;j++){
+        Dense4.bias[j] <== bias4[j];
+    }
 
+    for(var j=0;j<o4;j++){
+        out4[j] <== Dense4.out[j];
+    }
 }
 
-component main {public [in1]} = DNN(250, 144, 144, 144, 144, 12);
+component main {public [in1]} = DNN(250, 144, 144, 144, 144, 144, 144, 12);
