@@ -41,7 +41,7 @@ echo "Elapsed Time for Step-3: $((($end - $start)/1000000)) ms"  >> $log
 
 echo "Step-4: powers of tau" >> $log
 start=$(date +%s%N)
-snarkjs powersoftau new bn128 20 pot12_0000.ptau -v
+snarkjs powersoftau new bn128 10 pot12_0000.ptau -v
 snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v  -e=$randstr1
 end=$(date +%s%N)
 echo "Elapsed Time for Step-4: $((($end - $start)/1000000)) ms"  >> $log
