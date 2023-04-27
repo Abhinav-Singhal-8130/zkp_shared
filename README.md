@@ -12,3 +12,17 @@ m - medium
 l - large
 
 Already ran the small model. Now medium and large models need to be executed.
+
+#new task
+
+Generate input files for individual layers
+ ./run2.sh 3 4 5 6 7
+
+These are dummy weights. If we require to test with different weights, then change Dense_relu_l1-l4.circom files as well
+
+
+Generation and verification of proofs of individual layers 
+ ./run_.sh Dense_relu_l1  
+ ./run_.sh Dense_relu_l2  
+ ./run_.sh Dense_relu_l3  
+ ./run_.sh Dense_relu_l4

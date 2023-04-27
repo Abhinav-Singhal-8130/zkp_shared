@@ -1,0 +1,14 @@
+Step-1: compiling the Circuit
+Elapsed Time for Step-1: 409 ms
+Step-2: Make
+Elapsed Time for Step-2: 7177 ms
+Step-3: Execute binary which takes input.json and creates witness file
+Elapsed Time for Step-3: 4 ms
+Step-4: powers of tau
+Elapsed Time for Step-4: 11089 ms
+Step-5: phase 2
+Elapsed Time for Step-5: 151551 ms
+Step-6: Generating a proof
+Elapsed Time for Step-6: 1561 ms
+Step-7: Verify the proof
+Elapsed Time for Step-7: 1085 ms
